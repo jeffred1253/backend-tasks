@@ -22,8 +22,8 @@ class TaskController extends Controller
             'titre' => $request->titre,
             'description' => $request->description,
             'echeance' => $request->echeance,
-            'statue' => $request->statue,
-            'user_id' => auth()->id
+            'statut' => $request->statut,
+            'user_id' => auth()->user()->id
         ]);
 
         return response()->json(['message' => 'Nouvelle tâche ajoutée']);
@@ -40,7 +40,7 @@ class TaskController extends Controller
             $task->titre = $request->titre;
             $task->description = $request->description;
             $task->echeance = $request->echeance;
-            $task->statue = $request->statue;
+            $task->statut = $request->statut;
             $task->save();
     
             return response()->json(['message' => 'Tâche mise à jour']);
@@ -87,6 +87,14 @@ class TaskController extends Controller
                 'termine' => $termine,
                 'total' => $total,
             ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function task($taskId) {
+        try {
+            return response()->json(Task::find($taskId));
         } catch (\Throwable $th) {
             //throw $th;
         }

@@ -32,3 +32,4 @@ Ce projet est une API REST en Laravel pour la gestion des tâches. Il permet :
     GET     /api/myTasks : Liste des tâches de l'utilisateur connecté
     DELETE  /api/remove/{taskId} : Suppression de la tâche avec l'id "taskId"
     GET     /api/stats : Liste des valeurs de statistique des tâches de l'utilisateur connecté
+    GET     /task/{taskId} : Retourne la tâche dont l'id est "taskId"
